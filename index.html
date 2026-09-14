@@ -182,6 +182,7 @@ const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/CqI2pETb9bDg
 const $ = id => document.getElementById(id);
 const show = (id, on) => $(id).classList.toggle("show", !!on);
 const answers = { features: [] };
+const SUBMISSION_ID = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
 
 /* Same option values as the design consult landing page. */
 const ADDONS = ['Pergola', 'Outdoor kitchen', 'Pool house', 'Fire feature', 'Paver patio', 'Travertine patio', 'Retaining wall', 'Landscape lighting', 'Landscape renovation', 'Custom water feature', 'Driveway', 'Lawn'];
@@ -262,7 +263,7 @@ $('submitBtn').addEventListener('click', async () => {
   const budgetValue = nums.length ? Math.max(...nums.map(n => parseInt(n.replace(/\D/g, ''), 10))) * 1000 : 0;
   const payload = {
     ...answers, features: answers.features.join(', '), budget_value: budgetValue,
-    referral_code: code,
+    referral_code: code, submission_id: SUBMISSION_ID,
     full_name: $('in-name').value.trim(), address: $('in-address').value.trim(),
     phone: $('in-phone').value.trim(), email: $('in-email').value.trim(),
     consent_nonmarketing: $('consent-nonmkt').checked, consent_marketing: $('consent-mkt').checked
@@ -270,8 +271,15 @@ $('submitBtn').addEventListener('click', async () => {
 
   const btn = $('submitBtn'); btn.disabled = true; btn.textContent = 'Submitting'; show('e-submit', false);
   try {
-    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
-    const out = await res.json(); if (!out.ok) throw new Error(out.error || 'error');
+    let out = null;
+    for (let attempt = 0; attempt < 2 && !out; attempt++) {
+      try {
+        const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+        const txt = await res.text();
+        out = JSON.parse(txt);
+      } catch (e) { if (attempt === 0) await new Promise(r => setTimeout(r, 2500)); }
+    }
+    if (!out || !out.ok) throw new Error((out && out.error) || 'error');
     $('formWrap').style.display = 'none';
     const selfBook = payload.projectType !== 'Pool Renovation';
     if (selfBook) {
