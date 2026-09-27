@@ -2,231 +2,352 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Neighbor Referral | Contemporary Pool Works</title>
-<meta name="description" content="Referred by a Contemporary Pool Works client? Enter your referral code and request your complimentary 3D design consultation.">
+<meta name="description" content="Referred by a Contemporary Pool Works client? Enter the code from your card to claim your neighbor offer.">
+<meta name="theme-color" content="#0c1626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width: 700px)">
 <style>
-  :root{--blue:#2050c5;--sky:#a7daf5;--sky-soft:#e7eff9;--yellow:#ffde59;--ink:#222932;--ink-soft:#5b6472;--line:#d7dde6;--error:#b3261e}
+  :root{
+    color-scheme: dark;
+    --night:#0c1626; --deep:#070e1a; --panel:#122036; --line:#26364f;
+    --glow:#8fd8f7; --amber:#f4c66a; --paper:#f3f1ec; --muted:#9fb0c6; --error:#ff9b8f;
+    --display:"Fraunces", Georgia, "Times New Roman", serif;
+    --body:"Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
   *{box-sizing:border-box}
-  body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.5;color:var(--ink);background:#fff}
-  a{color:var(--blue)}
-  .cover{background:var(--blue);color:#fff;position:relative;padding:44px 24px 40px 32px;overflow:hidden}
-  .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:#fff}
-  .brand{display:inline-block;background:#fff;padding:10px 16px;border-radius:6px;margin-bottom:28px}
-  .brand img{display:block;height:46px;width:auto}
-  .cover h1{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:clamp(34px,7vw,52px);line-height:1;letter-spacing:-.03em;margin:0 0 16px;max-width:14ch}
-  .cover p{margin:0;font-size:17px;max-width:46ch;color:#e8eefc}
-  .cover strong{color:var(--yellow);font-weight:600}
-  main{max-width:600px;margin:0 auto;padding:32px 20px 64px}
-  @media (min-width:700px){.cover{padding:64px 48px 56px 56px}main{padding:40px 24px 80px}}
-  h2{font-family:"Inter Tight",sans-serif;font-weight:600;font-size:21px;letter-spacing:-.02em;color:var(--blue);margin:34px 0 6px}
-  h2:first-of-type{margin-top:0}
-  .lede{color:var(--ink-soft);margin:0 0 14px;font-size:15px}
-  .field{margin:0 0 18px}
-  label,.legend{display:block;font-weight:500;font-size:15px;margin-bottom:6px}
-  .hint{display:block;font-weight:400;color:var(--ink-soft);font-size:14px;margin-top:2px}
-  input[type=text],input[type=tel],input[type=email]{width:100%;font:inherit;color:var(--ink);padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;background:#fff}
-  input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(32,80,197,.18)}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--night);color:var(--paper);font:400 16px/1.55 var(--body)}
+  img{max-width:100%;display:block}
+  a{color:var(--glow)}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--glow);outline-offset:3px}
+  [hidden]{display:none!important}
+
+  /* Hero */
+  .hero{position:relative;min-height:clamp(500px,74svh,760px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
+  .hero picture, .hero img.bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+  .hero img.bg{object-fit:cover;object-position:62% 55%;transform:scale(1.06);animation:drift 18s ease-out forwards}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+      linear-gradient(180deg,rgba(7,14,26,.55) 0%,rgba(7,14,26,0) 26%,rgba(7,14,26,.2) 52%,rgba(12,22,38,.92) 82%,var(--night) 100%)}
+  @keyframes drift{to{transform:scale(1)}}
+  .brand{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:20px;background:#fff;border-radius:14px;padding:12px 18px}
+  .brand img{height:clamp(58px,16vw,84px);width:auto}
+  .hero-copy{padding:0 20px 34px;max-width:720px;width:100%;margin:0 auto}
+  .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 14px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .hero h1{font:560 clamp(44px,12.5vw,86px)/.95 var(--display);letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance;font-variation-settings:"opsz" 144}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--glow)}
+  .hero p.lead{text-shadow:0 1px 10px rgba(0,0,0,.5);margin:0 0 24px;font-size:18px;line-height:1.5;color:#dfe5ee;max-width:34ch}
+  .hero .cta{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:#1b1405;font-weight:600;font-size:17px;border:0;border-radius:999px;padding:15px 24px;text-decoration:none;cursor:pointer}
+  .hero .cta svg{width:18px;height:18px}
+  .rise{opacity:1;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .rise.d2{animation-delay:.12s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.36s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  /* Proof strip */
+  .proof{padding:30px 0 8px}
+  .proof h2{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 20px 14px;max-width:720px}
+  .strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 14px;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .strip figure{margin:0;flex:0 0 min(74vw,340px);scroll-snap-align:start}
+  .strip img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:14px;background:var(--panel)}
+
+  /* Form shell */
+  main{max-width:640px;margin:0 auto;padding:28px 20px 72px}
+  .progress{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+  .bar{flex:1;height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--glow),var(--amber));transition:width .35s ease}
+  .count{font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--muted);font-variant-numeric:tabular-nums;min-width:4.5ch;text-align:right}
+  .step{animation:stepin .35s ease both}
+  @keyframes stepin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+  .step h2{font:560 clamp(28px,7vw,38px)/1.08 var(--display);letter-spacing:-.01em;margin:0 0 8px;text-wrap:balance}
+  .lede{color:var(--muted);margin:0 0 22px}
+  .field{display:grid;gap:10px;margin-bottom:22px}
+  label, .legend{font-weight:600;font-size:15px}
+  .hint{display:block;font-weight:400;color:var(--muted);font-size:14px}
+  input[type=text],input[type=tel],input[type=email]{width:100%;font:inherit;font-size:17px;color:var(--paper);background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:15px 16px}
+  input::placeholder{color:#5f6f87}
+  input:focus{outline:none;border-color:var(--glow);box-shadow:0 0 0 3px rgba(143,216,247,.2)}
   input[aria-invalid=true]{border-color:var(--error)}
-  .opts{display:grid;gap:8px}
-  .opt{display:block;width:100%;text-align:left;font:inherit;font-weight:500;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:12px 14px;cursor:pointer}
-  .opt small{display:block;font-weight:400;color:var(--ink-soft);font-size:13.5px;margin-top:2px}
-  .opt.selected{border-color:var(--blue);background:var(--sky-soft)}
-  .opt:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(32,80,197,.18)}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
-  .chip{font:inherit;font-size:14.5px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
-  .chip.selected{border-color:var(--blue);background:var(--sky-soft);color:var(--blue);font-weight:500}
-  .chip-label{font-size:13px;color:var(--ink-soft);margin:10px 0 4px;text-transform:uppercase;letter-spacing:.05em}
+
+  /* Referral code, styled like the digits printed on the card */
+  .code-wrap{position:relative;max-width:420px}
+  #code{font:500 30px/1 var(--mono);letter-spacing:.42em;padding:18px 0 18px 18px;text-align:left;background:var(--deep);border-color:var(--line)}
+  .code-note{font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--muted)}
+
+  /* Physical cards */
+  .cards{display:grid;gap:12px}
+  .rcard.opt{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;gap:8px;min-height:118px;width:100%;text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;overflow:hidden;background:var(--panel);isolation:isolate;transition:border-color .2s,transform .2s}
+  .rcard::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--img) center/cover no-repeat;opacity:.34;transition:opacity .25s}
+  .rcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,22,38,.95) 35%,rgba(12,22,38,.55))}
+  .rcard .tag{grid-column:1/-1;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .rcard .offer{font:600 clamp(26px,7vw,34px)/1 var(--display);letter-spacing:-.01em}
+  .rcard small{display:block;font-size:14px;color:#c9d3e0;margin-top:6px}
+  .rcard .tick{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;align-self:center}
+  .rcard .tick svg{width:16px;height:16px;opacity:0}
+  .rcard:hover{border-color:#3d5577}
+  .rcard.selected{border-color:var(--amber)}
+  .rcard.selected::before{opacity:.5}
+  .rcard.selected .tick{background:var(--amber);border-color:var(--amber);color:#1b1405}
+  .rcard.selected .tick svg{opacity:1}
+
+  /* Choice lists */
+  .opts{display:grid;gap:10px}
+  .opt{display:block;width:100%;text-align:left;font-weight:500;font-size:17px;background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;cursor:pointer;transition:border-color .15s,background .15s}
+  .opt small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+  .opt:hover{border-color:#3d5577}
+  .opt.selected{border-color:var(--glow);background:#15304a}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:15px;background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+  .chip.selected{border-color:var(--glow);background:#15304a;color:var(--glow);font-weight:500}
+  .chip-label{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
   .hidden{display:none}
-  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-soft);margin:0 0 12px}
-  .consent input{margin-top:3px;flex:none;accent-color:var(--blue)}
-  .error{color:var(--error);font-size:14px;margin-top:6px;display:none}
+  .consent{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin:0 0 12px}
+  .consent input{margin-top:3px;flex:none;width:18px;height:18px;accent-color:var(--glow)}
+  .error{color:var(--error);font-size:14px;display:none}
   .error.show{display:block}
-  button.primary{display:block;width:100%;font:inherit;font-weight:600;font-size:17px;color:#fff;background:var(--blue);border:0;border-radius:6px;padding:16px;cursor:pointer;margin-top:8px}
-  button.primary:hover{background:#1a43a8}
-  button.primary[disabled]{background:#8fa3d8;cursor:progress}
-  .fine{font-size:13.5px;color:var(--ink-soft);margin:14px 0 0}
-  .done{display:none}.done.show{display:block}
-  .done iframe{width:100%;height:680px;border:0;margin-top:14px}
-  .contact{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-soft)}
-  .contact b{color:var(--ink);font-weight:500}
+
+  .nav{display:flex;gap:12px;align-items:center;margin-top:26px}
+  .back{background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:14px 20px;cursor:pointer;color:var(--muted)}
+  .next,.primary{flex:1;border:0;border-radius:999px;padding:16px 22px;font-weight:600;font-size:17px;background:var(--amber);color:#1b1405;cursor:pointer}
+  .primary[disabled]{opacity:.6;cursor:progress}
+  .fine{font-size:13.5px;color:var(--muted);margin:14px 0 0}
+
+  .done{display:none}.done.show{display:block;animation:stepin .4s ease both}
+  .done h2{font:560 clamp(32px,8vw,44px)/1.05 var(--display);margin:0 0 10px}
+  .done iframe{width:100%;height:680px;border:0;margin-top:16px;border-radius:14px;background:#fff}
+  .contact{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted);display:grid;gap:4px}
+  .contact b{color:var(--paper);font-weight:600}
+  .preview-flag{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:50;font:500 11px/1 var(--mono);letter-spacing:.08em;background:var(--amber);color:#1b1405;padding:8px 10px;border-radius:999px}
+
+  @media (min-width:900px){
+    .hero-copy{padding-bottom:56px}
+    .strip{padding-left:max(20px,calc((100vw - 1100px)/2))}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero img.bg,.rise,.step,.done.show{animation:none;transform:none}
+    .bar i{transition:none}
+  }
 </style>
 </head>
 <body>
 
-<header class="cover">
+<header class="hero">
+  <picture>
+    <source media="(max-width: 700px)" srcset="img/hero-m.webp">
+    <img class="bg" src="img/hero.webp" alt="A lit pool house and pool at dusk, built by Contemporary Pool Works" fetchpriority="high">
+  </picture>
   <div class="brand"><img src="data:image/png;base64,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" alt="Contemporary Pool Works"></div>
-  <h1>A neighbor sent you</h1>
-  <p id="heroCopy">You are here because a neighbor handed you a card. <strong>Enter the referral code on the back</strong>, pick the card you were given, and we will take it from there.</p>
+  <div class="hero-copy">
+    <p class="eyebrow rise">Neighbor referral</p>
+    <h1 class="rise d2">A neighbor <em>sent you.</em></h1>
+    <p class="lead rise d3" id="heroCopy">Someone we built for handed you a card. Enter the code on the back and we will take it from there. About a minute.</p>
+    <a class="cta rise d4" href="#start">Enter my code <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
 </header>
 
-<main>
+<section class="proof" aria-label="Recent Contemporary Pool Works projects">
+  <h2>Recent backyards</h2>
+  <div class="strip">
+    <figure><img src="img/proof-freeform.webp" alt="Aerial view of a freeform pool with attached spa" loading="lazy" width="1100" height="618"></figure>
+    <figure><img src="img/proof-fire.webp" alt="Gas fire bowls with glass media at the pool edge" loading="lazy" width="1100" height="756"></figure>
+    <figure><img src="img/proof-dusk.webp" alt="Rectangular pool and pool house lit at night" loading="lazy" width="1100" height="618"></figure>
+    <figure><img src="img/proof-natural.webp" alt="Freeform pool with travertine deck and palms" loading="lazy" width="1100" height="625"></figure>
+    <figure><img src="img/proof-lounge.webp" alt="Poolside lounge seating on a pale stone deck" loading="lazy" width="1100" height="734"></figure>
+  </div>
+</section>
+
+<main id="start">
   <div id="formWrap">
-    <h2>Your referral</h2>
-    <p class="lede">Both are on the card you were given.</p>
-    <div class="field">
-      <label for="code">Referral code<span class="hint">7 digits, written on the back of the card</span></label>
-      <input id="code" type="text" inputmode="numeric" autocomplete="off" placeholder="6583268">
-      <div class="error" id="e-code">Enter the 7 digit code from the card.</div>
-    </div>
-    <div class="field">
-      <span class="legend">Which card were you given?</span>
-      <div class="opts" data-field="referral_offer">
-        <button class="opt" type="button" data-value="A">$5,000 off<small>Build projects $200,000 and up</small></button>
-        <button class="opt" type="button" data-value="B">$2,500 off<small>Build projects $100,000 and up</small></button>
-        <button class="opt" type="button" data-value="C">1 free service visit<small>When you start a weekly pool maintenance plan</small></button>
+    <div class="progress" aria-hidden="true"><div class="bar"><i id="barFill"></i></div><span class="count" id="stepCount">1 / 7</span></div>
+
+    <!-- Step: card + code -->
+    <section class="step" data-step="card">
+      <h2>Which card do you have?</h2>
+      <p class="lede">Tap the one that matches the card in your hand.</p>
+      <div class="field">
+        <div class="cards opts" data-field="referral_offer">
+          <button class="rcard opt" type="button" data-value="A" style="--img:url(img/design.webp)"><span class="tag">Card A</span><span><span class="offer">$5,000 off</span><small>Build projects $200,000 and up</small></span><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button class="rcard opt" type="button" data-value="B" style="--img:url(img/proof-freeform.webp)"><span class="tag">Card B</span><span><span class="offer">$2,500 off</span><small>Build projects $100,000 and up</small></span><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+          <button class="rcard opt" type="button" data-value="C" style="--img:url(img/service.webp)"><span class="tag">Card C</span><span><span class="offer">1 free service visit</span><small>When you start a weekly pool maintenance plan</small></span><span class="tick"><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        </div>
+        <div class="error" id="e-referral_offer">Pick the card you were given.</div>
       </div>
-      <div class="error" id="e-referral_offer">Pick the card you were given.</div>
-    </div>
-
-    <h2 id="aboutTitle">About your project</h2>
-    <p class="lede" id="aboutLede">Same questions we ask everyone. About 60 seconds.</p>
-
-    <div class="field">
-      <span class="legend">Where is your property?</span>
-      <div class="opts" data-field="location">
-        <button class="opt" type="button" data-value="Within 50 miles of Columbia">Within 50 miles of Columbia</button>
-        <button class="opt" type="button" data-value="Moving to the area">Not yet, but I'm moving to the area</button>
-        <button class="opt" type="button" data-value="Outside the area">Outside the area</button>
+      <div class="field">
+        <label for="code">Referral code<span class="hint">The 7 digits on the back of the card</span></label>
+        <div class="code-wrap"><input id="code" type="text" inputmode="numeric" autocomplete="off" maxlength="7" placeholder="0000000"></div>
+        <div class="error" id="e-code">Enter the 7 digit code from the card.</div>
       </div>
-      <div class="error" id="e-location">Choose one.</div>
-    </div>
+    </section>
 
-    <div id="designWrap">
-    <div class="field">
-      <span class="legend">Do you have a project in mind?</span>
-      <div class="opts" data-field="projectInMind">
-        <button class="opt" type="button" data-value="Yes">Yes, I know what I want</button>
-        <button class="opt" type="button" data-value="Somewhat">Somewhat, still shaping the vision</button>
-        <button class="opt" type="button" data-value="Not yet">Not yet, exploring options</button>
+    <section class="step" data-step="location" hidden>
+      <h2>Where is the property?</h2>
+      <p class="lede">We build within about 50 miles of Columbia.</p>
+      <div class="field">
+        <div class="opts" data-field="location">
+          <button class="opt" type="button" data-value="Within 50 miles of Columbia">Within 50 miles of Columbia</button>
+          <button class="opt" type="button" data-value="Moving to the area">Not yet, I'm moving to the area</button>
+          <button class="opt" type="button" data-value="Outside the area">Outside the area</button>
+        </div>
+        <div class="error" id="e-location">Choose one.</div>
       </div>
-      <div class="error" id="e-projectInMind">Choose one.</div>
-    </div>
+    </section>
 
-    <div class="field">
-      <span class="legend">What are we designing?</span>
-      <div class="opts" data-field="projectType">
-        <button class="opt" type="button" data-value="New Pool">New custom pool</button>
-        <button class="opt" type="button" data-value="Pool Renovation">Pool renovation</button>
-        <button class="opt" type="button" data-value="Full Outdoor Living Experience">Full outdoor living experience</button>
+    <!-- Design path -->
+    <section class="step" data-step="inmind" hidden>
+      <h2>Do you have a project in mind?</h2>
+      <div class="field">
+        <div class="opts" data-field="projectInMind">
+          <button class="opt" type="button" data-value="Yes">Yes, I know what I want</button>
+          <button class="opt" type="button" data-value="Somewhat">Somewhat, still shaping the vision</button>
+          <button class="opt" type="button" data-value="Not yet">Not yet, exploring options</button>
+        </div>
+        <div class="error" id="e-projectInMind">Choose one.</div>
       </div>
-      <div class="error" id="e-projectType">Choose one.</div>
-    </div>
+    </section>
 
-    <div class="field hidden" id="poolTypeField">
-      <span class="legend">What type of pool do you have?</span>
-      <div class="opts" data-field="poolType">
-        <button class="opt" type="button" data-value="Concrete">Concrete / gunite</button>
-        <button class="opt" type="button" data-value="Fiberglass">Fiberglass</button>
-        <button class="opt" type="button" data-value="Liner">Vinyl liner</button>
+    <section class="step" data-step="type" hidden>
+      <h2>What are we designing?</h2>
+      <div class="field">
+        <div class="opts" data-field="projectType">
+          <button class="opt" type="button" data-value="New Pool">New custom pool</button>
+          <button class="opt" type="button" data-value="Pool Renovation">Pool renovation</button>
+          <button class="opt" type="button" data-value="Full Outdoor Living Experience">Full outdoor living experience</button>
+        </div>
+        <div class="error" id="e-projectType">Choose one.</div>
       </div>
-      <div class="error" id="e-poolType">Choose one.</div>
-    </div>
-
-    <div class="field hidden" id="budgetField">
-      <span class="legend" id="budgetTitle">What investment range are you considering?</span>
-      <div class="opts" data-field="budget" id="budgetOptions"></div>
-      <div class="error" id="e-budget">Choose one.</div>
-    </div>
-
-    <div class="field hidden" id="featField">
-      <span class="legend" id="featTitle">Which features interest you?</span>
-      <div id="chipArea"></div>
-    </div>
-
-    <div class="field">
-      <span class="legend">When would you like to break ground?</span>
-      <div class="opts" data-field="timeline">
-        <button class="opt" type="button" data-value="ASAP">As soon as possible</button>
-        <button class="opt" type="button" data-value="1-3 Months">1 to 3 months</button>
-        <button class="opt" type="button" data-value="3-6 Months">3 to 6 months</button>
-        <button class="opt" type="button" data-value="Not sure yet">Not sure yet</button>
+      <div class="field hidden" id="poolTypeField">
+        <span class="legend">What type of pool do you have?</span>
+        <div class="opts" data-field="poolType">
+          <button class="opt" type="button" data-value="Concrete">Concrete / gunite</button>
+          <button class="opt" type="button" data-value="Fiberglass">Fiberglass</button>
+          <button class="opt" type="button" data-value="Liner">Vinyl liner</button>
+        </div>
+        <div class="error" id="e-poolType">Choose one.</div>
       </div>
-      <div class="error" id="e-timeline">Choose one.</div>
-    </div>
-    </div>
+    </section>
 
-    <div id="serviceWrap" class="hidden">
-    <div class="field">
-      <span class="legend">What type of pool do you have?</span>
-      <div class="opts" data-field="svc_poolType">
-        <button class="opt" type="button" data-value="Concrete">Concrete / gunite</button>
-        <button class="opt" type="button" data-value="Fiberglass">Fiberglass</button>
-        <button class="opt" type="button" data-value="Liner">Vinyl liner</button>
+    <section class="step" data-step="budget" hidden>
+      <h2 id="budgetTitle">What investment range are you considering?</h2>
+      <div class="field hidden" id="budgetField">
+        <div class="opts" data-field="budget" id="budgetOptions"></div>
+        <div class="error" id="e-budget">Choose one.</div>
       </div>
-      <div class="error" id="e-svc_poolType">Choose one.</div>
-    </div>
-
-    <div class="field">
-      <span class="legend">How is your pool sanitized?</span>
-      <div class="opts" data-field="svc_sanitizer">
-        <button class="opt" type="button" data-value="Salt">Salt water</button>
-        <button class="opt" type="button" data-value="Chlorine">Chlorine</button>
-        <button class="opt" type="button" data-value="Not sure">Not sure</button>
+      <div class="field hidden" id="featField">
+        <span class="legend" id="featTitle">Which features interest you?</span>
+        <div id="chipArea"></div>
       </div>
-      <div class="error" id="e-svc_sanitizer">Choose one.</div>
-    </div>
+    </section>
 
-    <div class="field">
-      <span class="legend">Who takes care of it today?</span>
-      <div class="opts" data-field="svc_current">
-        <button class="opt" type="button" data-value="Self">I do it myself</button>
-        <button class="opt" type="button" data-value="Another company">Another service company</button>
-        <button class="opt" type="button" data-value="Nobody">Nobody right now</button>
+    <section class="step" data-step="timeline" hidden>
+      <h2>When would you like to break ground?</h2>
+      <div class="field">
+        <div class="opts" data-field="timeline">
+          <button class="opt" type="button" data-value="ASAP">As soon as possible</button>
+          <button class="opt" type="button" data-value="1-3 Months">1 to 3 months</button>
+          <button class="opt" type="button" data-value="3-6 Months">3 to 6 months</button>
+          <button class="opt" type="button" data-value="Not sure yet">Not sure yet</button>
+        </div>
+        <div class="error" id="e-timeline">Choose one.</div>
       </div>
-      <div class="error" id="e-svc_current">Choose one.</div>
-    </div>
+    </section>
 
-    <div class="field">
-      <span class="legend">When would you like service to start?</span>
-      <div class="opts" data-field="svc_start">
-        <button class="opt" type="button" data-value="ASAP">As soon as possible</button>
-        <button class="opt" type="button" data-value="Within 30 days">Within 30 days</button>
-        <button class="opt" type="button" data-value="Next swim season">Next swim season</button>
+    <!-- Service path (Card C) -->
+    <section class="step" data-step="svc_pool" hidden>
+      <h2>Tell us about your pool.</h2>
+      <p class="lede">So our service team shows up with the right equipment.</p>
+      <div class="field">
+        <span class="legend">Pool type</span>
+        <div class="opts" data-field="svc_poolType">
+          <button class="opt" type="button" data-value="Concrete">Concrete / gunite</button>
+          <button class="opt" type="button" data-value="Fiberglass">Fiberglass</button>
+          <button class="opt" type="button" data-value="Liner">Vinyl liner</button>
+        </div>
+        <div class="error" id="e-svc_poolType">Choose one.</div>
       </div>
-      <div class="error" id="e-svc_start">Choose one.</div>
+      <div class="field">
+        <span class="legend">How is it sanitized?</span>
+        <div class="opts" data-field="svc_sanitizer">
+          <button class="opt" type="button" data-value="Salt">Salt water</button>
+          <button class="opt" type="button" data-value="Chlorine">Chlorine</button>
+          <button class="opt" type="button" data-value="Not sure">Not sure</button>
+        </div>
+        <div class="error" id="e-svc_sanitizer">Choose one.</div>
+      </div>
+    </section>
+
+    <section class="step" data-step="svc_care" hidden>
+      <h2>Who takes care of it today?</h2>
+      <div class="field">
+        <div class="opts" data-field="svc_current">
+          <button class="opt" type="button" data-value="Self">I do it myself</button>
+          <button class="opt" type="button" data-value="Another company">Another service company</button>
+          <button class="opt" type="button" data-value="Nobody">Nobody right now</button>
+        </div>
+        <div class="error" id="e-svc_current">Choose one.</div>
+      </div>
+    </section>
+
+    <section class="step" data-step="svc_start" hidden>
+      <h2>When should service start?</h2>
+      <div class="field">
+        <div class="opts" data-field="svc_start">
+          <button class="opt" type="button" data-value="ASAP">As soon as possible</button>
+          <button class="opt" type="button" data-value="Within 30 days">Within 30 days</button>
+          <button class="opt" type="button" data-value="Next swim season">Next swim season</button>
+        </div>
+        <div class="error" id="e-svc_start">Choose one.</div>
+      </div>
+      <div class="field">
+        <label for="in-notes">Anything we should know?<span class="hint">Optional. Gate code, dogs, equipment issues.</span></label>
+        <input id="in-notes" type="text" autocomplete="off">
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="step" data-step="contact" hidden>
+      <h2 id="contactTitle">Where should we send your consultation details?</h2>
+      <div class="field"><label for="in-name">Full name</label><input id="in-name" type="text" autocomplete="name"><div class="error" id="e-name">Please enter your name.</div></div>
+      <div class="field"><label for="in-address">Home address<span class="hint">Street, city, state</span></label><input id="in-address" type="text" autocomplete="street-address"><div class="error" id="e-address">Please enter your address so we can assess your property.</div></div>
+      <div class="field"><label for="in-phone">Phone</label><input id="in-phone" type="tel" autocomplete="tel" inputmode="tel"><div class="error" id="e-phone">Please enter a valid phone number.</div></div>
+      <div class="field"><label for="in-email">Email</label><input id="in-email" type="email" autocomplete="email" inputmode="email"><div class="error" id="e-email">Please enter a valid email.</div></div>
+      <label class="consent"><input type="checkbox" id="consent-nonmkt"><span>I consent to receive non-marketing text messages from Contemporary Pool Works, LLC about appointment reminders and account notifications. Message frequency may vary, message and data rates may apply. Text HELP for assistance, reply STOP to opt out.</span></label>
+      <label class="consent"><input type="checkbox" id="consent-mkt"><span>I consent to receive marketing text messages about special offers, discounts, and service updates from Contemporary Pool Works, LLC at the phone number provided. Message frequency may vary. Message and data rates may apply. Text HELP for assistance, reply STOP to opt out.</span></label>
+      <p class="fine"><a href="https://contemporarypoolworks.com/terms-conditions">Terms &amp; Conditions</a> &middot; <a href="https://contemporarypoolworks.com/privacy-policy/">Privacy Policy</a></p>
+    </section>
+
+    <div class="nav">
+      <button class="back" id="backBtn" type="button" hidden>Back</button>
+      <button class="next" id="nextBtn" type="button">Continue</button>
+      <button class="primary" id="submitBtn" type="button" hidden>Request my design consultation</button>
     </div>
-
-    <div class="field">
-      <label for="in-notes">Anything we should know?<span class="hint">Optional. Gate code, dogs, equipment issues, anything that helps.</span></label>
-      <input id="in-notes" type="text" autocomplete="off">
-    </div>
-    </div>
-
-    <h2 id="contactTitle">Where should we send your consultation details?</h2>
-    <div class="field"><label for="in-name">Full name</label><input id="in-name" type="text" autocomplete="name"><div class="error" id="e-name">Please enter your name.</div></div>
-    <div class="field"><label for="in-address">Home address<span class="hint">Street, city, state</span></label><input id="in-address" type="text" autocomplete="street-address"><div class="error" id="e-address">Please enter your address so we can assess your property.</div></div>
-    <div class="field"><label for="in-phone">Phone</label><input id="in-phone" type="tel" autocomplete="tel" inputmode="tel"><div class="error" id="e-phone">Please enter a valid phone number.</div></div>
-    <div class="field"><label for="in-email">Email</label><input id="in-email" type="email" autocomplete="email" inputmode="email"><div class="error" id="e-email">Please enter a valid email.</div></div>
-
-    <label class="consent"><input type="checkbox" id="consent-nonmkt"><span>I consent to receive non-marketing text messages from Contemporary Pool Works, LLC about appointment reminders and account notifications. Message frequency may vary, message and data rates may apply. Text HELP for assistance, reply STOP to opt out.</span></label>
-    <label class="consent"><input type="checkbox" id="consent-mkt"><span>I consent to receive marketing text messages about special offers, discounts, and service updates from Contemporary Pool Works, LLC at the phone number provided. Message frequency may vary. Message and data rates may apply. Text HELP for assistance, reply STOP to opt out.</span></label>
-    <p class="fine"><a href="https://contemporarypoolworks.com/terms-conditions">Terms &amp; Conditions</a> &middot; <a href="https://contemporarypoolworks.com/privacy-policy/">Privacy Policy</a></p>
-
-    <button class="primary" id="submitBtn" type="button">Request my design consultation</button>
-    <p class="fine">Your information is never sold or shared. Referral offers are confirmed by our team.</p>
+    <p class="fine" id="fineNote">Your information is never sold or shared. Referral offers are confirmed by our team.</p>
     <div class="error" id="e-submit">Something went wrong sending your request. Please try again, or call 803-403-1968.</div>
   </div>
 
   <section class="done" id="done" aria-live="polite">
-    <h2>Your request is in.</h2>
+    <p class="eyebrow">Request received</p>
+    <h2>You're all set.</h2>
     <p class="lede" id="doneCopy"></p>
     <div id="bookingEmbed"></div>
   </section>
 
   <div class="contact">
-    <b>Contemporary Pool Works</b><br>
-    10020 Broad River Road, Irmo, SC 29063<br>
-    803-403-1968 &nbsp;|&nbsp; info@cpoolworks.com
+    <b>Contemporary Pool Works</b>
+    <span>10020 Broad River Road, Irmo, SC 29063</span>
+    <span>803-403-1968 &nbsp;|&nbsp; info@cpoolworks.com</span>
   </div>
 </main>
 
 <script>
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbynAYyKJk1ZPKNPLfgJfJYwhFTz6DQ5BBmU2eMdFyHbx69C_8Ri4E4wrdL2-aSJ7mgM/exec";
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/CqI2pETb9bDglzxeGX4W";
+/* Only the live site sends leads. Anywhere else (previews) the submit is simulated. */
+const LIVE = /(^|\.)cpoolworks\.com$|github\.io$/.test(location.hostname);
 
 const $ = id => document.getElementById(id);
 const show = (id, on) => $(id).classList.toggle("show", !!on);
@@ -241,44 +362,82 @@ const RENO_SCOPE = {
   'Liner': ['Liner replacement', 'Coping', 'Deck replacement', 'Equipment upgrade', 'Pool lighting', 'Steps or bench repair']
 };
 
+const COPY = {
+  design: { contactTitle: 'Where should we send your consultation details?', button: 'Request my design consultation' },
+  service: { contactTitle: 'How should our service team reach you?', button: 'Request my maintenance plan' }
+};
+const isService = () => answers.referral_offer === 'C';
+
+/* Steps per path. Single-answer steps advance on tap. */
+const FLOWS = {
+  design: ['card', 'location', 'inmind', 'type', 'budget', 'timeline', 'contact'],
+  service: ['card', 'location', 'svc_pool', 'svc_care', 'svc_start', 'contact']
+};
+const AUTO = { location: 'location', inmind: 'projectInMind', svc_care: 'svc_current', timeline: 'timeline' };
+let stepIdx = 0;
+const flow = () => FLOWS[isService() ? 'service' : 'design'];
+
+function render() {
+  const f = flow(), cur = f[stepIdx];
+  document.querySelectorAll('.step').forEach(s => { s.hidden = s.dataset.step !== cur; });
+  $('barFill').style.width = Math.round((stepIdx + 1) / f.length * 100) + '%';
+  $('stepCount').textContent = (stepIdx + 1) + ' / ' + f.length;
+  $('backBtn').hidden = stepIdx === 0;
+  const last = stepIdx === f.length - 1;
+  $('nextBtn').hidden = last;
+  $('submitBtn').hidden = !last;
+  const c = COPY[isService() ? 'service' : 'design'];
+  $('contactTitle').textContent = c.contactTitle;
+  $('submitBtn').textContent = c.button;
+}
+function go(delta) {
+  stepIdx = Math.max(0, Math.min(flow().length - 1, stepIdx + delta));
+  render();
+  const top = $('start').getBoundingClientRect().top + window.scrollY - 8;
+  if (window.scrollY > top || delta > 0) window.scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+}
+
+function need(field){ const bad = !answers[field]; show('e-' + field, bad); return bad; }
+function text(id, test){ const el = $('in-' + id); const bad = !test(el.value.trim()); show('e-' + id, bad); el.setAttribute('aria-invalid', bad ? 'true' : 'false'); return bad; }
+function codeBad(){ const n = $('code').value.replace(/\D/g, '').length !== 7; show('e-code', n); $('code').setAttribute('aria-invalid', n ? 'true' : 'false'); return n; }
+
+function stepBad(step) {
+  let bad = false;
+  if (step === 'card') { bad = need('referral_offer') || bad; bad = codeBad() || bad; }
+  if (step === 'location') bad = need('location');
+  if (step === 'inmind') bad = need('projectInMind');
+  if (step === 'type') { bad = need('projectType'); if (answers.projectType === 'Pool Renovation') bad = need('poolType') || bad; }
+  if (step === 'budget' && !$('budgetField').classList.contains('hidden')) bad = need('budget');
+  if (step === 'timeline') bad = need('timeline');
+  if (step === 'svc_pool') { bad = need('svc_poolType'); bad = need('svc_sanitizer') || bad; }
+  if (step === 'svc_care') bad = need('svc_current');
+  if (step === 'svc_start') bad = need('svc_start');
+  if (step === 'contact') {
+    bad = text('name', v => v.length > 1) || bad;
+    bad = text('address', v => v.length > 5) || bad;
+    bad = text('phone', v => v.replace(/\D/g, '').length >= 10) || bad;
+    bad = text('email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || bad;
+  }
+  return bad;
+}
+
 document.querySelectorAll('.opts').forEach(list => list.addEventListener('click', e => {
   const btn = e.target.closest('.opt'); if (!btn) return;
   list.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
   btn.classList.add('selected');
-  answers[list.dataset.field] = btn.dataset.value;
-  show('e-' + list.dataset.field, false);
-  if (list.dataset.field === 'projectType' || list.dataset.field === 'poolType') rebuild();
-  if (list.dataset.field === 'referral_offer') setMode();
+  const field = list.dataset.field;
+  answers[field] = btn.dataset.value;
+  show('e-' + field, false);
+  if (field === 'projectType' || field === 'poolType') rebuild();
+  if (field === 'referral_offer') render();
+  const cur = flow()[stepIdx];
+  const autoField = AUTO[cur] || (cur === 'type' && answers.projectType !== 'Pool Renovation' ? 'projectType' : cur === 'type' ? 'poolType' : null);
+  if (autoField === field) setTimeout(() => go(1), 260);
 }));
 
-/* Card C is the service card: swap the design consult questions for a maintenance plan request. */
-const COPY = {
-  design: {
-    hero: 'You are here because someone we built for handed you a card. <strong>Enter the referral code on the back</strong>, tell us about your project, and we will get your complimentary 3D design consultation on the calendar.',
-    aboutTitle: 'About your project', aboutLede: 'Same questions we ask everyone. About 60 seconds.',
-    contactTitle: 'Where should we send your consultation details?', button: 'Request my design consultation'
-  },
-  service: {
-    hero: 'You are here because a neighbor handed you a card. <strong>Enter the referral code on the back</strong>, tell us about your pool, and your first service visit is free when you start a weekly maintenance plan.',
-    aboutTitle: 'About your pool', aboutLede: 'About 30 seconds, so our service team shows up ready.',
-    contactTitle: 'How should our service team reach you?', button: 'Request my maintenance plan'
-  }
-};
-const isService = () => answers.referral_offer === 'C';
-function setMode(){
-  const c = COPY[isService() ? 'service' : 'design'];
-  $('designWrap').classList.toggle('hidden', isService());
-  $('serviceWrap').classList.toggle('hidden', !isService());
-  $('heroCopy').innerHTML = c.hero;
-  $('aboutTitle').textContent = c.aboutTitle; $('aboutLede').textContent = c.aboutLede;
-  $('contactTitle').textContent = c.contactTitle; $('submitBtn').textContent = c.button;
-}
-/* Deep link: referral.cpoolworks.com/?card=C preselects the card. */
-(function(){
-  const card = (new URLSearchParams(location.search).get('card') || '').toUpperCase();
-  const btn = document.querySelector('.opts[data-field="referral_offer"] .opt[data-value="' + card + '"]');
-  if (btn) btn.click();
-})();
+$('code').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 7); if (e.target.value.length === 7) show('e-code', false); });
+$('nextBtn').addEventListener('click', () => { if (stepBad(flow()[stepIdx])) { const f = document.querySelector('.step:not([hidden]) .error.show'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; } go(1); });
+$('backBtn').addEventListener('click', () => go(-1));
 
 function rebuild(){
   const reno = answers.projectType === 'Pool Renovation';
@@ -292,12 +451,12 @@ function rebuild(){
   let opts;
   if (reno) {
     $('budgetTitle').textContent = 'What is your estimated renovation budget?';
-    if (answers.poolType === 'Fiberglass') opts = ['Under $5K', '$5K\u2013$15K', '$15K\u2013$30K', '$30K+', 'Not sure yet'];
-    else if (answers.poolType === 'Liner') opts = ['Under $6K', '$6K\u2013$15K', '$15K\u2013$30K', '$30K+', 'Not sure yet'];
-    else opts = ['Under $15K', '$15K\u2013$30K', '$30K\u2013$50K', '$50K+', 'Not sure yet'];
+    if (answers.poolType === 'Fiberglass') opts = ['Under $5K', '$5K–$15K', '$15K–$30K', '$30K+', 'Not sure yet'];
+    else if (answers.poolType === 'Liner') opts = ['Under $6K', '$6K–$15K', '$15K–$30K', '$30K+', 'Not sure yet'];
+    else opts = ['Under $15K', '$15K–$30K', '$30K–$50K', '$50K+', 'Not sure yet'];
   } else {
     $('budgetTitle').textContent = 'What investment range are you considering?';
-    opts = ['Under $80K', '$80K\u2013$120K', '$120K\u2013$150K', '$150K\u2013$200K', '$200K+', 'Not sure yet'];
+    opts = ['Under $80K', '$80K–$120K', '$120K–$150K', '$150K–$200K', '$200K+', 'Not sure yet'];
   }
   $('budgetOptions').innerHTML = opts.map(o => '<button class="opt" type="button" data-value="' + o + '">' + o + '</button>').join('');
   const chip = (list, excl) => list.map(f => '<button class="chip" type="button"' + (excl ? ' data-excl="' + excl + '"' : '') + '>' + f + '</button>').join('');
@@ -320,28 +479,18 @@ $('chipArea').addEventListener('click', e => {
   i > -1 ? answers.features.splice(i, 1) : answers.features.push(v);
 });
 
-function need(field){ const bad = !answers[field]; show('e-' + field, bad); return bad; }
-function text(id, test){ const el = $('in-' + id); const bad = !test(el.value.trim()); show('e-' + id, bad); el.setAttribute('aria-invalid', bad ? 'true' : 'false'); return bad; }
+/* Deep link: referral.cpoolworks.com/?card=C preselects the card. */
+(function(){
+  const card = (new URLSearchParams(location.search).get('card') || '').toUpperCase();
+  const btn = document.querySelector('.opts[data-field="referral_offer"] .opt[data-value="' + card + '"]');
+  if (btn) btn.click();
+})();
 
 $('submitBtn').addEventListener('click', async () => {
   const code = $('code').value.replace(/\D/g, '');
-  let bad = false;
-  bad = (show('e-code', code.length !== 7), code.length !== 7) || bad;
-  bad = need('referral_offer') || bad;
-  bad = need('location') || bad;
-  if (isService()) {
-    ['svc_poolType', 'svc_sanitizer', 'svc_current', 'svc_start'].forEach(f => { bad = need(f) || bad; });
-  } else {
-    bad = need('projectInMind') || bad; bad = need('projectType') || bad;
-    if (answers.projectType === 'Pool Renovation') bad = need('poolType') || bad;
-    if (!$('budgetField').classList.contains('hidden')) bad = need('budget') || bad;
-    bad = need('timeline') || bad;
-  }
-  bad = text('name', v => v.length > 1) || bad;
-  bad = text('address', v => v.length > 5) || bad;
-  bad = text('phone', v => v.replace(/\D/g, '').length >= 10) || bad;
-  bad = text('email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || bad;
-  if (bad) { const f = document.querySelector('.error.show'); if (f) f.scrollIntoView({behavior:'smooth', block:'center'}); return; }
+  if (stepBad('contact')) { const f = document.querySelector('.step:not([hidden]) .error.show'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  const firstBad = flow().findIndex(s => stepBad(s));
+  if (firstBad > -1) { stepIdx = firstBad; render(); return; }
 
   const nums = (answers.budget || '').match(/\$(\d+)K/g) || [];
   const budgetValue = nums.length ? Math.max(...nums.map(n => parseInt(n.replace(/\D/g, ''), 10))) * 1000 : 0;
@@ -363,10 +512,12 @@ $('submitBtn').addEventListener('click', async () => {
     ...answers, ...contact, flow: 'design', features: answers.features.join(', '), budget_value: budgetValue
   };
   if (!isService()) Object.keys(payload).filter(k => k.indexOf('svc_') === 0).forEach(k => delete payload[k]);
+  window.__lastPayload = payload;
 
-  const btn = $('submitBtn'); btn.disabled = true; btn.textContent = 'Submitting'; show('e-submit', false);
+  const btn = $('submitBtn'); btn.disabled = true; btn.textContent = 'Sending'; show('e-submit', false);
   try {
     let out = null;
+    if (!LIVE) { await new Promise(r => setTimeout(r, 700)); out = { ok: true, preview: true }; }
     for (let attempt = 0; attempt < 2 && !out; attempt++) {
       try {
         const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
@@ -382,16 +533,20 @@ $('submitBtn').addEventListener('click', async () => {
     } else if (selfBook) {
       const names = payload.full_name.split(' ');
       const params = new URLSearchParams({ first_name: names.shift() || '', last_name: names.join(' '), email: payload.email, phone: payload.phone });
-      $('doneCopy').textContent = 'Your details are in. Pick a time that works for you and it goes straight on our design team\'s calendar.';
-      $('bookingEmbed').innerHTML = '<iframe src="' + BOOKING_URL + '?' + params.toString() + '" title="Book your design consultation"></iframe>';
+      $('doneCopy').textContent = 'Pick a time that works for you and it goes straight on our design team\'s calendar.';
+      if (LIVE) $('bookingEmbed').innerHTML = '<iframe src="' + BOOKING_URL + '?' + params.toString() + '" title="Book your design consultation"></iframe>';
     } else {
       $('doneCopy').textContent = 'Expect a call or text right away. Our team responds to renovation requests within minutes.';
     }
-    show('done', true); window.scrollTo({ top: 0, behavior: 'smooth' });
+    show('done', true);
+    window.scrollTo({ top: $('start').getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
   } catch (err) {
     show('e-submit', true); btn.disabled = false; btn.textContent = COPY[isService() ? 'service' : 'design'].button;
   }
 });
+
+if (!LIVE) { const f = document.createElement('div'); f.className = 'preview-flag'; f.textContent = 'PREVIEW, NOTHING IS SENT'; document.body.appendChild(f); }
+render();
 </script>
 </body>
 </html>
